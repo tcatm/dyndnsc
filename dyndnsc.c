@@ -111,6 +111,7 @@ void send_request() {
       fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
 
     sent = true;
+    printf("Update successful.\n");
   } while(false);
 
   curl_easy_cleanup(curl);
@@ -151,6 +152,8 @@ void add_addr(struct address *addr) {
 }
 
 int main(int argc, char **argv) {
+  setvbuf(stdout, NULL, _IONBF, 0);
+
   url = NULL;
   keyfile = NULL;
   certfile = NULL;
